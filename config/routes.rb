@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get '/posts/index',to: 'posts#index'
+  root to: "posts#index"
+  resources :posts
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     passwords: 'users/passwords'
