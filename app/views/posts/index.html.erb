@@ -6,8 +6,6 @@
   </div>
   <div class="post_wrapper__content">
     <ul class="post_wrapper__content__post_list">
-      <%# 未投稿の場合は「まだ投稿されたスレッドはありません。」と表示するように条件分岐すること %>
-      <%# each文で投稿一覧を表示すること %>
       <% if @posts.blank? %>
         <h3><span>まだ投稿されたスレッドはありません。</span></h3>
       <% else %>
@@ -37,7 +35,7 @@
                 </li>
               </ul>
               <ul class="post__bottom_box__admin_actions">
-              <% if current_user != nil && current_user.id == post.user_id %>  
+              <% if user_signed_in? && current_user.id == post.user_id %>  
                 <li>編集</li>
                 <li>削除</li>
               <% end%>
