@@ -13,14 +13,14 @@
       <div class="post_detail">
         <div class="post_detail__top_box">
           <div class="post_detail__top_box__name">
-            <span>投稿者：投稿者名</span>
+            <span>投稿者：<%= @post.user.name %></span>
           </div>
           <div class="post_detail__top_box__name">
-            <span>投稿日時：投稿日時</span>
+            <span>投稿日時： <%= @post.created_at.strftime("%Y-%m-%d %H:%M") %></span>
           </div>
         </div>  
         <div class="post_detail__middle_box">
-          <span>投稿内容</span>
+          <span><%= @post.content %></span>
         </div>
         <div class="post_detail__bottom_box">
           <ul class="post_detail__bottom_box__user_actions">
@@ -34,8 +34,10 @@
             </li>
           </ul>
           <div class="post_detail__bottom_box__admin_actions">
+          <% if user_signed_in? && current_user.id == @post.user_id %>
             編集
             削除
+          <% end %>
           </div>
         </div>
       </div>
