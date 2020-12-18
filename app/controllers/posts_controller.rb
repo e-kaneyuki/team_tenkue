@@ -25,14 +25,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  begin
-    create
-  rescue => error
-
-    puts error
-
-  end
-
   private
     def post_params
       params.require(:post).permit(:content).merge(user_id: current_user.id)
