@@ -5,7 +5,6 @@
         <span>新規投稿</span>
       </h3>
       <%= form_with model: @post, local: true,  html: {class: "form_area"} do |f| %>
-      <% byebug %>
         <div class="form_area__field">
           <%= render 'layouts/error_messages',  object: f.object %>
           <%= f.text_area :content, id: "post_text", placeholder: "投稿内容を入力", rows: 10 %>
