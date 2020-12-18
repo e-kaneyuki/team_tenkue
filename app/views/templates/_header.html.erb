@@ -1,13 +1,11 @@
 <header class="header">
   <div class="header__bar">
     <h1>
-      <%# ルートパスへのリンクを設置 %>
       <span>転クエ掲示板</span>
     </h1>
-    <%# ログイン状態に応じて表記を変更すること %>
     <ul class="header__bar__user_nav">
       <li class="user_name">
-        <span>ユーザー名 さん</span>
+        <span><%= current_user.name %> さん</span>
       </li>
       <li class="header__bar__user_nav__btn">
         ログアウト
