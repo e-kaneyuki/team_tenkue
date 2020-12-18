@@ -1,0 +1,10 @@
+<%# エラーメッセージの部分テンプレート %>
+  <% if object.errors.any? %>
+    <div class="vali_alert">
+      <ul>
+        <% object.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
