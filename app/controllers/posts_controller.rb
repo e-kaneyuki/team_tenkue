@@ -13,19 +13,24 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     # byebug
 
-    @post.save!
+    if @post.save
+      redirect_to controller: :posts, action: :index
+    else
+      render "new"
+    end
 
-    redirect_to controller: :posts, action: :index
-    # if @post.save!
-    #   redirect_to controller: :post, action: :index
-    # else
-    #   render "new"
-    # end
+  end
+
+  begin
+    create
+  rescue => error
+
+    puts error
+
   end
 
   private
     def post_params
-      # byebug
       params.require(:post).permit(:content).merge(user_id: current_user.id)
     end
 end
