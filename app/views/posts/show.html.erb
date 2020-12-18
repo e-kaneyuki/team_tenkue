@@ -4,8 +4,10 @@
       <span>投稿詳細</span>
     </h3>
     <div class="back_link">
-      <i class="fas fa-angle-double-left"></i>
-      <span>一覧へ戻る</span>
+      <%= link_to root_path do %>
+        <i class="fas fa-angle-double-left"></i>
+        <span>一覧へ戻る</span>
+      <% end %>
     </div>
   </div>
   <div class="post_wrapper__content scroll">
@@ -35,8 +37,8 @@
           </ul>
           <div class="post_detail__bottom_box__admin_actions">
           <% if user_signed_in? && current_user.id == @post.user_id %>
-            編集
-            削除
+            <%= link_to '編集', edit_post_path(@post.id), method: :get %>
+            <%= link_to '削除', post_path(@post.id), method: :delete %>
           <% end %>
           </div>
         </div>

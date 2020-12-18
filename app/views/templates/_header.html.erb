@@ -7,7 +7,7 @@
     <%# ログイン状態に応じて表記を変更すること %>
     <ul class="header__bar__user_nav">
       <li class="user_name">
-        <span>ユーザー名 さん</span>
+        <span><%= current_user.name %> さん</span>
       </li>
       <li class="header__bar__user_nav__btn">
         ログアウト
