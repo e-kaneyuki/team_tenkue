@@ -7,18 +7,20 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    # byebug
-    @user = current_user
   end
 
   def create
     @post = Post.new(post_params)
+    # byebug
 
-    if @post.save!
-      redirect_to controller: :post, action: :index
-    else
-      render "new"
-    end
+    @post.save!
+
+    redirect_to controller: :posts, action: :index
+    # if @post.save!
+    #   redirect_to controller: :post, action: :index
+    # else
+    #   render "new"
+    # end
   end
 
   private
