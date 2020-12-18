@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destoy]
-  before_action :move_to_index, only: [:edit, :update, :destoy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :move_to_index, only: [:edit, :update, :destroy]
   
   def index
     @posts = Post.all.includes(:user).order(id: "DESC")
