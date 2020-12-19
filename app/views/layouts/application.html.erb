@@ -12,6 +12,11 @@
 
   <body>
     <div class="wrapper">
+      <div class="notifications">
+        <% flash.each do |message_type, message| %>
+          <div class="text-center alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+      </div>
       <%= yield %>
     </div>
   </body>
