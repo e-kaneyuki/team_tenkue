@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <%= render 'templates/header' %>
     <div class="wrapper">
       <div class="notifications">
         <% flash.each do |message_type, message| %>
@@ -19,5 +20,6 @@
       </div>
       <%= yield %>
     </div>
+    <%= render 'templates/footer' %>
   </body>
 </html>
