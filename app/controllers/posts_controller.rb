@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      redirect_to controller: :posts, action: :index
+      redirect_to root_path
     else
       render "new"
     end
