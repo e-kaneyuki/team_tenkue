@@ -10,6 +10,12 @@ class Users::SessionsController < Devise::SessionsController
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
+  def destroy
+    super
+    session[:keep_signed_out] = true
+    # redirect_to root_url
+  end
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
