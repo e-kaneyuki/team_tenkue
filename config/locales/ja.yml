@@ -2,4 +2,4 @@ ja:
   activerecord:
     attributes:
       post:
-        content: 'TEXT'
+        content: 'Text'
