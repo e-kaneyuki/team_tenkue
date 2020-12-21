@@ -41,22 +41,17 @@ class PostsController < ApplicationController
 
   private
   
-  def post_params
-    params.require(:post).permit(:content)
-  end
-
   def set_post
     @post = Post.find(params[:id])
   end
 
-  private
-    def post_params
-      params.require(:post).permit(:content).merge(user_id: current_user.id)
-    end
+  def post_params
+    params.require(:post).permit(:content).merge(user_id: current_user.id)
+  end
 
-    def move_to_index
-      unless user_signed_in? && current_user.id == @post.user_id
-        redirect_to root_path
-      end
+  def move_to_index
+    unless user_signed_in? && current_user.id == @post.user_id
+      redirect_to root_path
     end
+  end
 end
