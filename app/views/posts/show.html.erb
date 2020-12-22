@@ -4,8 +4,10 @@
       <span>投稿詳細</span>
     </h3>
     <div class="back_link">
-      <i class="fas fa-angle-double-left"></i>
-      <span>一覧へ戻る</span>
+      <%= link_to root_path do %>
+        <i class="fas fa-angle-double-left"></i>
+        <span>一覧へ戻る</span>
+      <% end %>
     </div>
   </div>
   <div class="post_wrapper__content scroll">
@@ -13,14 +15,14 @@
       <div class="post_detail">
         <div class="post_detail__top_box">
           <div class="post_detail__top_box__name">
-            <span>投稿者：投稿者名</span>
+            <span>投稿者：<%= @post.user.name %></span>
           </div>
           <div class="post_detail__top_box__name">
-            <span>投稿日時：投稿日時</span>
+            <span>投稿日時： <%= @post.created_at.strftime("%Y-%m-%d %H:%M") %></span>
           </div>
         </div>  
         <div class="post_detail__middle_box">
-          <span>投稿内容</span>
+          <span><%= @post.content %></span>
         </div>
         <div class="post_detail__bottom_box">
           <ul class="post_detail__bottom_box__user_actions">
@@ -34,8 +36,10 @@
             </li>
           </ul>
           <div class="post_detail__bottom_box__admin_actions">
-            編集
-            削除
+          <% if user_signed_in? && current_user.id == @post.user_id %>
+            <%= link_to '編集', edit_post_path(@post.id), method: :get %>
+            <%= link_to '削除', post_path(@post.id), method: :delete %>
+          <% end %>
           </div>
         </div>
       </div>
