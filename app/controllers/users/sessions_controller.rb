@@ -13,7 +13,7 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     super
     session[:keep_signed_out] = true
-    # redirect_to root_url, notice: 'ログアウトしました'
+    flash[:notice] = "ログアウトしました"
   end
 
   # before_action :configure_sign_in_params, only: [:create]
