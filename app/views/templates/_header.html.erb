@@ -2,13 +2,8 @@
     <header class="header">
   <div class="header__bar">
     <h1>
-      <%# ルートパスへのリンクを設置 %>
       <span>転クエ掲示板</span>
     </h1>
-
-
-    <%# ログイン状態に応じて表記を変更すること %>
-<%# ログインされている場合 %>
   <% if user_signed_in? %>
     <ul class="header__bar__user_nav">
       <li class="user_name">
@@ -21,7 +16,6 @@
         <%= link_to "投稿する", new_post_path %>
       </li>
     </ul>
-<%# ログインされていない場合 %>
 <% else %>
     <ul class="header__bar__user_nav">
       <li class="header__bar__user_nav__btn">
