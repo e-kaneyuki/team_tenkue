@@ -1,5 +1,10 @@
 crumb :root do
-  link "Home", root_path
+  link "投稿一覧", root_path
+end
+
+crumb :post do |post|
+  link "#{post.user.name}さんの投稿", post_path
+  parent :root
 end
 
 # crumb :projects do
