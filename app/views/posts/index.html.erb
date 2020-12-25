@@ -4,6 +4,7 @@
       <span>投稿一覧</span>
     </h3>
   </div>
+  <% byebug %>
   <div class="post_wrapper__content">
     <ul class="post_wrapper__content__post_list">
       <% if @posts.blank? %>
@@ -18,9 +19,9 @@
                   <span>投稿者：<%= post.user.name %></span>
                 </div>
                 <div class="post__top_box__time">
-                  <span>投稿日時： <%= post.created_at.strftime("%Y-%m-%d %H:%M") %></span> 
+                  <span>投稿日時： <%= post.created_at.strftime("%Y-%m-%d %H:%M") %></span>
                 </div>
-              </div>  
+              </div>
               <div class="post__middle_box">
                 <span><%= post.content %></span>
               </div>
@@ -31,12 +32,19 @@
                     <span></span>
                   </li>
                   <li>
-                    <i class="far fa-heart"></i>
-                    <span></span>
+                    <%= link_to post_likes_path(post.id), method: :create do %>
+                      <%= icon('far', 'heart') %>
+                    <% end %>
+                    <% if post.liked_users.count == 0 %>
+                      <span></span>
+                    <% else %>
+                      <span><%= post.liked_users.count %></span>
+                    <% end %>
+                    <%# <%= link_to  "削除", post_like_path(post.id), method: :delete %> %>
                   </li>
                 </ul>
                 <ul class="post__bottom_box__admin_actions">
-                  <% if user_signed_in? && current_user.id == post.user_id %>  
+                  <% if user_signed_in? && current_user.id == post.user_id %>
                     <li><%= link_to '編集',edit_post_path(post.id) %></li>
                     <li><%= link_to '削除',post,method: :delete,data: { confirm: "本当に削除しますか？",cancel: "やめる",commit: "削除",title: "削除の確認"} %></li>
                   <% end%>
