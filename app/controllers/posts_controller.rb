@@ -40,6 +40,7 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @post.comments.all.includes(:user).order(id: 'DESC')
+    @like = Like.new
   end
 
   private
