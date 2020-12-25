@@ -40,7 +40,6 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @post.comments.all.includes(:user).order(id: 'DESC')
-    @comments_count = Comment.where(post_id: @post.id).count
   end
 
   private
