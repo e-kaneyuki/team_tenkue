@@ -20,8 +20,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def show; end
-
   def edit; end
 
   def update
@@ -37,6 +35,11 @@ class PostsController < ApplicationController
     @post.destroy
     flash[:danger] = "「#{@post.content}」を削除しました。"
     redirect_to posts_url
+  end
+
+  def show
+    @comment = Comment.new
+    @comments = @post.comments.all.includes(:user).order(id: 'DESC')
   end
 
   private

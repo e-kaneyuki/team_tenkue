@@ -29,7 +29,7 @@
                 <ul class="post__bottom_box__user_actions">
                   <li>
                     <i class="far fa-comment-alt"></i>
-                    <span></span>
+                    <span><%= post.comments.count %></span>
                   </li>
                   <li>
                     <%= link_to post_likes_path(post.id), method: :create do %>
