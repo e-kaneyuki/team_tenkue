@@ -26,6 +26,3 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
-# db/migrate
-/db/migrate/20201213050412_create_posts.rb
