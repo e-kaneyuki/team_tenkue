@@ -43,5 +43,17 @@ RSpec.describe User, type: :model do
       user.valid?
       expect(user.errors[:password]).to be_present
     end
+
+    it "passwordに半角英字がないと無効なこと" do
+      user = FactoryBot.build(:user, password: "1234567890")
+      user.valid?
+      expect(user.errors[:password]).to be_present
+    end
+
+    it "passwordに半角数字がないと無効なこと" do
+      user = FactoryBot.build(:user, password: "abcdefghijk")
+      user.valid?
+      expect(user.errors[:password]).to be_present
+    end
   end
 end

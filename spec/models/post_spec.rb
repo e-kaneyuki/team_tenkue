@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   describe "有効な値の時" do
     it "postが有効なこと" do
-      expect(FactoryBot.build(:user)).to be_valid
+      expect(FactoryBot.build(:post)).to be_valid
     end
   end
 
