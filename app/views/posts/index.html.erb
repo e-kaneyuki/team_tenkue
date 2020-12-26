@@ -4,7 +4,6 @@
       <span>投稿一覧</span>
     </h3>
   </div>
-  <% byebug %>
   <div class="post_wrapper__content">
     <ul class="post_wrapper__content__post_list">
       <% if @posts.blank? %>
@@ -32,15 +31,21 @@
                     <span><%= post.comments.count %></span>
                   </li>
                   <li>
-                    <%= link_to post_likes_path(post.id), method: :create do %>
-                      <%= icon('far', 'heart') %>
-                    <% end %>
-                    <% if post.liked_users.count == 0 %>
-                      <span></span>
+                    <% if current_user.already_liked?(post) %>
+                      <%= link_to post_like_path(id: post.id, post_id: post.id), class: "post_action_btn post_liked", method: :delete do %>
+                        <i class="fas fa-heart"></i>
+                        <span><%= post.liked_users.count %></span>
+                      <% end %>
                     <% else %>
-                      <span><%= post.liked_users.count %></span>
+                      <%= link_to post_likes_path(post), class: "post_action_btn", method: :create do %>
+                        <i class="far fa-heart"></i>
+                      <% end %>
+                      <% if post.liked_users.count == 0 %>
+                        <span></span>
+                      <% else %>
+                        <span><%= post.liked_users.count %></span>
+                      <% end %>
                     <% end %>
-                    <%# <%= link_to  "削除", post_like_path(post.id), method: :delete %> %>
                   </li>
                 </ul>
                 <ul class="post__bottom_box__admin_actions">
