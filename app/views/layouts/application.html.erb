@@ -12,12 +12,12 @@
 
   <body>
     <%= render 'templates/header' %>
-    <div class="wrapper">
       <div class="notifications">
         <% flash.each do |message_type, message| %>
           <div class="text-center alert alert-<%= message_type %>"><%= message %></div>
         <% end %>
       </div>
+      <div class="wrapper">
       <%= yield %>
     </div>
     <%= render 'templates/footer' %>

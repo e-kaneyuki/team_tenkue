@@ -3,8 +3,6 @@
   <div class="home_icon">
     <i class="fas fa-home"></i>
   </div>
-    <div>
-      <% breadcrumb :post, @post %>
-      <%= breadcrumbs separator: "&nbsp; &rsaquo; &nbsp;" %>
-    </div>
+    <% breadcrumb :post, @post %>
+    <%= breadcrumbs separator: "&nbsp; &rsaquo; &nbsp;", class: "breadcrumbs-list" %>
 </div>
