@@ -13,7 +13,7 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     super
     session[:keep_signed_out] = true
-    flash[:notice] = "ログアウトしました"
+    after_sign_out_path_for root_path
   end
 
   # before_action :configure_sign_in_params, only: [:create]
