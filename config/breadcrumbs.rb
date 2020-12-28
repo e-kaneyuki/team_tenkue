@@ -3,7 +3,17 @@ crumb :root do
 end
 
 crumb :post do |post|
-  link "#{post.user.name}さんの投稿", post_path
+  link "#{post.user.name}さんの投稿(#{post.id})", post_path
+  parent :root
+end
+
+crumb :new_post do
+  link "新規投稿", root_path
+  parent :root
+end
+
+crumb :edit_post do |post|
+  link "#{post.user.name}さんの投稿(#{post.id})の編集", edit_post_path
   parent :root
 end
 
