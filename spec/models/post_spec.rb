@@ -8,7 +8,7 @@ RSpec.describe Post, type: :model do
   end
 
   describe "無効な値の時" do
-    it "contetnが空なら無効なこと" do
+    it "contentが空なら無効なこと" do
       post = FactoryBot.build(:post, content: nil)
       post.valid?
       expect(post.errors[:content]).to be_present
