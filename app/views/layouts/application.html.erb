@@ -9,8 +9,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag('favicon.ico') %>
   </head>
-
   <body>
+    <div class="wrapper">
+    <div class="post_wrapper">
+</div>
+      <%= yield %>
+    </div>
     <%= render 'templates/header' %>
     <div class="wrapper">
       <div class="notifications">
@@ -18,7 +22,6 @@
           <div class="text-center alert alert-<%= message_type %>"><%= message %></div>
         <% end %>
       </div>
-      <%= yield %>
     </div>
     <%= render 'templates/footer' %>
   </body>

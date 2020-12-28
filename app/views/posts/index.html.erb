@@ -18,9 +18,9 @@
                   <span>投稿者：<%= post.user.name %></span>
                 </div>
                 <div class="post__top_box__time">
-                  <span>投稿日時： <%= post.created_at.strftime("%Y-%m-%d %H:%M") %></span> 
+                  <span>投稿日時： <%= post.created_at.strftime("%Y-%m-%d %H:%M") %></span>
                 </div>
-              </div>  
+              </div>
               <div class="post__middle_box">
                 <span><%= post.content %></span>
               </div>
@@ -36,7 +36,7 @@
                   </li>
                 </ul>
                 <ul class="post__bottom_box__admin_actions">
-                  <% if user_signed_in? && current_user.id == post.user_id %>  
+                  <% if user_signed_in? && current_user.id == post.user_id %>
                     <li><%= link_to '編集',edit_post_path(post.id) %></li>
                     <li><%= link_to '削除',post,method: :delete,data: { confirm: "本当に削除しますか？",cancel: "やめる",commit: "削除",title: "削除の確認"} %></li>
                   <% end%>
