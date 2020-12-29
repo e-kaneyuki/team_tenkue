@@ -31,21 +31,16 @@
                     <span><%= post.comments.count %></span>
                   </li>
                   <li>
-                    <% if current_user.already_liked?(post) %>
-                      <%= link_to post_like_path(id: post.id, post_id: post.id), class: "post_action_btn post_liked", method: :delete do %>
-                        <i class="fas fa-heart"></i>
-                        <span><%= post.liked_users.count %></span>
-                      <% end %>
-                    <% else %>
+
                       <%= link_to post_likes_path(post), class: "post_action_btn", method: :create do %>
                         <i class="far fa-heart"></i>
                       <% end %>
+
                       <% if post.liked_users.count == 0 %>
                         <span></span>
                       <% else %>
                         <span><%= post.liked_users.count %></span>
                       <% end %>
-                    <% end %>
                   </li>
                 </ul>
                 <ul class="post__bottom_box__admin_actions">
