@@ -3,3 +3,8 @@ ja:
     attributes:
       post:
         content: 'Text'
+
+  devise:
+    sessions:
+      user:
+        signed_out: 'ログアウトしました'
