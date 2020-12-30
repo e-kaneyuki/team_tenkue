@@ -20,7 +20,7 @@
           <div class="post_detail__top_box__name">
             <span>投稿日時： <%= @post.created_at.strftime("%Y-%m-%d %H:%M") %></span>
           </div>
-        </div>  
+        </div>
         <div class="post_detail__middle_box">
           <span><%= @post.content %></span>
         </div>
@@ -58,7 +58,7 @@
                   <%= link_to edit_post_comment_path(comment.id), method: :get do %>
                     <span>編集</span>
                   <% end %>
-                  <%= link_to post_comment_path(comment.id), method: :delete do %>
+                  <%= link_to post_comment_path(@post.id,comment.id), method: :delete do %>
                     <span>削除</span>
                   <% end %>
                 <% end %>

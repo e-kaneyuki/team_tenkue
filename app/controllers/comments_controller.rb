@@ -10,6 +10,16 @@ class CommentsController < ApplicationController
       redirect_to post_path(@post.id)
     end
   end
+  def edit
+  end
+
+  def destroy
+    # <byebug>
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to post_path(params[:post_id])
+  end
+
 
   def edit
     @comment = current_user.comments.find(params[:id])
