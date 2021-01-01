@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: "posts#index"
   resources :posts do
+    resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :edit, :update, :destroy]
   end
 
@@ -8,12 +9,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     passwords: 'users/passwords'
   }
-  resources :post
-  root to: "posts#index"
-
 
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
-    delete 'users/guest_logout', to: 'users/sessions#destroy'
   end
 end

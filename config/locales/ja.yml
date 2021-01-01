@@ -1,5 +1,13 @@
 ja:
   activerecord:
     attributes:
+      user:
+        name: '名前'
+
       post:
         content: 'Text'
+
+  devise:
+    sessions:
+      user:
+        signed_out: 'ログアウトしました'

@@ -1,4 +1,6 @@
 <div class="post_wrapper">
+<% breadcrumb :post, @post %>
+<%= render 'templates/breadcrumbs' %>
   <div class="post_wrapper__header">
     <h3>
       <span>投稿詳細</span>
@@ -31,8 +33,21 @@
               <span><%= @post.comments.count %></span>
             </li>
             <li>
-              <i class="far fa-heart"></i>
-              <span>いいね数</span>
+            <% if current_user.already_liked?(@post) %>
+              <%= link_to post_like_path(@post), class: "post_action_btn post_liked", method: :delete do %>
+                <i class="fas fa-heart"></i>
+                <span><%= @post.likes.count %></span>
+              <% end %>
+            <% else %>
+              <%= link_to post_likes_path(@post), class: "post_action_btn", method: :create do %>
+                <i class="far fa-heart"></i>
+              <% end %>
+              <% if @post.likes.count == 0 %>
+                <span></span>
+              <% else %>
+                <span><%= @post.likes.count %></span>
+              <% end %>
+            <% end %>
             </li>
           </ul>
           <div class="post_detail__bottom_box__admin_actions">
