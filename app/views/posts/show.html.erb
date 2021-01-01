@@ -55,7 +55,7 @@
             <div class="comment_area__list__comment__right_box">
               <div class="comment_area__list__comment__right_box__info">
                 <% if user_signed_in? && current_user.id == comment.user_id %>
-                  <%= link_to edit_post_comment_path(comment.id), method: :get do %>
+                  <%= link_to edit_post_comment_path(@post.id,comment.id), method: :get do %>
                     <span>編集</span>
                   <% end %>
                   <%= link_to post_comment_path(@post.id,comment.id), method: :delete do %>
