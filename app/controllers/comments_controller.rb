@@ -10,14 +10,11 @@ class CommentsController < ApplicationController
       redirect_to post_path(@post.id)
     end
   end
-  # byebug
   def edit
-    # byebug
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
     render "posts/show"
   end
-
   def update
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
@@ -31,9 +28,9 @@ class CommentsController < ApplicationController
     end
   end
   def destroy
-    # <byebug>
     @comment = Comment.find(params[:id])
     @comment.destroy
+    flash[:notice] = "コメントを削除しました"
     redirect_to post_path(params[:post_id])
   end
 
