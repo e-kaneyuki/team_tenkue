@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 
     if @comment.update(comment_params)
       flash[:notice] = "コメントを更新しました"
-      redirect_to post_path(params[:post_id])
+      redirect_to post_path(@post.id)
     else
       flash[:alert] = 'コメントを(140文字以内で)入力してください。'
       render 'posts/show'
