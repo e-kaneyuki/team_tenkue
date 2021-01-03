@@ -19,8 +19,11 @@ class CommentsController < ApplicationController
   end
 
   def update
+    @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
+
     if @comment.update(comment_params)
+      flash[:notice] = "コメントを更新しました"
       redirect_to post_path(params[:post_id])
     else
       flash[:alert] = 'コメントを(140文字以内で)入力してください。'
