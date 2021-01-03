@@ -13,14 +13,9 @@ class CommentsController < ApplicationController
     end
   end
   def edit
-    @post = Post.find(params[:post_id])
-    @comment = Comment.find(params[:id])
     render "posts/show"
   end
   def update
-    @post = Post.find(params[:post_id])
-    @comment = Comment.find(params[:id])
-
     if @comment.update(comment_params)
       flash[:notice] = "コメントを更新しました"
       redirect_to post_path(@post.id)
@@ -30,13 +25,13 @@ class CommentsController < ApplicationController
     end
   end
   def destroy
-    @comment = current_user.comments.find(params[:id])
     @comment.destroy
     flash[:notice] = "コメントを削除しました"
     redirect_to post_path(params[:post_id])
   end
 
   def ensure_correct_user
+    @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
     if @comment.user_id != current_user.id
       flash[:notice] = "権限がありません"
