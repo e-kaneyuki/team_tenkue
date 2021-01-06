@@ -33,7 +33,7 @@
               <span><%= @post.comments.count %></span>
             </li>
             <li>
-            <% if current_user.already_liked?(@post) %>
+            <% if user_signed_in? && current_user.already_liked?(@post) %>
               <%= link_to post_like_path(@post), class: "post_action_btn post_liked", method: :delete do %>
                 <i class="fas fa-heart"></i>
                 <span><%= @post.likes.count %></span>
@@ -53,7 +53,7 @@
           <div class="post_detail__bottom_box__admin_actions">
           <% if user_signed_in? && current_user.id == @post.user_id %>
             <%= link_to '編集', edit_post_path(@post.id), method: :get %>
-            <%= link_to '削除', post_path(@post.id), method: :delete %>
+            <%= link_to '削除', post_path(@post), method: :delete, title: '削除確認', data: { confirm: '本当に削除しますか？', cancel: 'やめる', commit: '削除' } %>
           <% end %>
           </div>
         </div>
